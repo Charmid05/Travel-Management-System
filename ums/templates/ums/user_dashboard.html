@@ -1,0 +1,72 @@
+{% extends 'ums/main.html' %}
+
+{% block title %}
+    <title>User Dashboard</title>
+{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <section class="row">
+        <!-- User's Total Bookings Section -->
+        <section class="col-12">
+            <section class="card text-center text-white bg-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Your Bookings</h5> <hr>
+                    <h3 class="card-title">{{ user_guests.count }}</h3>
+                    <p>Total Bookings</p>
+                </div>
+            </section>
+        </section>
+    </section>
+
+    <hr>
+
+    <h4>Your Bookings</h4>
+    <section class="container-fluid" style="margin-bottom: 5%; margin-top: 1.5%;">
+        <section class="row">
+            <!-- List of Bookings -->
+            <section style="width: 100%;">
+                <section class="card card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Destination</th>
+                                <th>Hotel</th>
+                                <th>Airline</th>
+                                <th>Arrival Date</th>
+                                <th>Departure Date</th>
+                                <th>Date Created</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for guest in user_guests %}
+                                <tr>
+                                    <td>{{ guest.destination }}</td>
+                                    <td>{{ guest.hotel }}</td>
+                                    <td>{{ guest.airline }}</td>
+                                    <td>{{ guest.arrival_date }}</td>
+                                    <td>{{ guest.departure_date }}</td>
+                                    <td>{{ guest.date_created }}</td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td colspan="6">You have no bookings yet.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+        </section>
+    </section>
+
+    <hr>
+
+    <!-- Add a New Guest Button -->
+    <section class="row">
+        <section class="col-12">
+            <a href="{% url 'create_booking' %}" class="btn btn-success">Add New Booking</a>
+        </section>
+    </section>
+</section>
+{% endblock %}

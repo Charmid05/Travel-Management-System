@@ -11,4 +11,9 @@ urlpatterns = [
     path('new_booking/', views.addGuest, name='add_guest'),
     path('delete_guest/<int:id>/', views.deleteGuest, name='delete_guest'),
     path('update_guest/<int:id>/', views.updateGuest, name='update_guest'),
+    path('user-dashboard/', views.user_dashboard, name='user-dashboard'),
+    path('create_booking/', views.CreateNewBooking, name='create_booking'),
+
+
+
 ]

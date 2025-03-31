@@ -28,20 +28,20 @@
                         <th>Update/Delete</th>
                     </tr>
 
-                    {% for guest in guests %}
+                    {% for guest_info in guest_data %}
                         <tr>
-                            <td>{{guest.name}}</td>
-                            <td>{{guest.phone}}</td>
-                            <td>{{guest.email}}</td>
-                            <td>{{guest.country}}</td>
-                            <td>{{guest.arrival_date}}</td>
-                            <td>{{guest.departure_date}}</td>
-                            <td>{{guest.destination}}</td>
-                            <td>{{guest.hotel}}</td>
-                            <td>{{guest.airline}}</td>
+                            <td>{{ guest_info.user_name }}</td>
+                            <td>{{ guest_info.phone_number }}</td>
+                            <td>{{ guest_info.email }}</td>
+                            <td>{{ guest_info.guest.country }}</td>
+                            <td>{{ guest_info.guest.arrival_date }}</td>
+                            <td>{{ guest_info.guest.departure_date }}</td>
+                            <td>{{ guest_info.guest.destination }}</td>
+                            <td>{{ guest_info.guest.hotel }}</td>
+                            <td>{{ guest_info.guest.airline }}</td>
                             <td>
-                                <a href="{% url 'update_guest' guest.id %}" class="btn" title="Update"><i class="far fa-edit fa-lg"></i></a>
-                                <a href="{% url 'delete_guest' guest.id %}" class="btn" title="Delete"><i class="far fa-trash-alt fa-lg"></i></a>
+                                <a href="{% url 'update_guest' guest_info.guest.id %}" class="btn" title="Update"><i class="far fa-edit fa-lg"></i></a>
+                                <a href="{% url 'delete_guest' guest_info.guest.id %}" class="btn" title="Delete"><i class="far fa-trash-alt fa-lg"></i></a>
                             </td>
                         </tr>
                     {% endfor %}

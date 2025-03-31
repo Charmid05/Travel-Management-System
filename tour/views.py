@@ -8,7 +8,7 @@ from ums.decorators import allowed_users
 # Create your views here.
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin', 'staff'])
+# @allowed_users(allowed_roles=['admin', 'staff'])
 def destinations(request):
     allDestinations = Destination.objects.all()
     form = DestinationForm()
@@ -21,8 +21,9 @@ def destinations(request):
     return render(request, 'tour/destinations.html', context=context)
 
 
+
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin', 'staff'])
+# @allowed_users(allowed_roles=['admin', 'staff'])
 def hotels(request):
     allHotels = Hotel.objects.all()
     form = HotelForm()
@@ -36,7 +37,7 @@ def hotels(request):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin', 'staff'])
+# @allowed_users(allowed_roles=['admin', 'staff'])
 def airlines(request):
     allAirlines = Airline.objects.all()
     form = AirlineForm()
@@ -50,7 +51,7 @@ def airlines(request):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+# @allowed_users(allowed_roles=['admin'])
 def deleteDestination(request, id):
     destination = Destination.objects.get(id=id)
     destination.delete()
@@ -74,7 +75,7 @@ def deleteAirline(request, id):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+# @allowed_users(allowed_roles=['admin'])
 def updateDestination(request, id):
     destination = Destination.objects.get(id=id)
     form = DestinationForm(instance=destination)
@@ -87,7 +88,7 @@ def updateDestination(request, id):
     
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+# @allowed_users(allowed_roles=['admin'])
 def updateHotel(request, id):
     hotel = Hotel.objects.get(id=id)
     form = HotelForm(instance=hotel)
@@ -100,7 +101,7 @@ def updateHotel(request, id):
     
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+# @allowed_users(allowed_roles=['admin'])
 def updateAirline(request, id):
     airline = Airline.objects.get(id=id)
     form = AirlineForm(instance=airline)

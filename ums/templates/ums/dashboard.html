@@ -1,57 +1,59 @@
+
 {% extends 'ums/main.html' %}
 
 {% block title %}
-    <title>Dashboard</title>
+    <title>Admin Dashboard</title>
 {% endblock %}
 
 {% block content %}
 <section class="container-fluid">
     <section class="row">
         <section class="col-3">
-        <section class="card text-center text-white bg-primary">
-        <div class="card-body">
-            <h5 class="card-title">Total Bookings</h5> <hr>
-            <h3 class="card-title">{{guest_count}}</h3>
-        </div>
-        </section>
-        </section>
-
-        <section class="col-3">
-        <section class="card text-center text-white bg-success">
-        <div class="card-body">
-            <h5 class="card-title">Total Destinations</h5> <hr>
-            <h3 class="card-title">{{destination_count}}</h3>
-        </div>
-        </section>
+            <section class="card text-center text-white bg-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Total Bookings</h5> <hr>
+                    <h3 class="card-title">{{ guest_count }}</h3>
+                </div>
+            </section>
         </section>
 
         <section class="col-3">
-        <section class="card text-center text-white bg-info">
-        <div class="card-body">
-            <h5 class="card-title">Total Hotels</h5> <hr>
-            <h3 class="card-title">{{hotel_count}}</h3>
-        </div>
-        </section>
+            <section class="card text-center text-white bg-success">
+                <div class="card-body">
+                    <h5 class="card-title">Total Destinations</h5> <hr>
+                    <h3 class="card-title">{{ destination_count }}</h3>
+                </div>
+            </section>
         </section>
 
         <section class="col-3">
-        <section class="card text-center text-white bg-danger">
-        <div class="card-body">
-            <h5 class="card-title">Total Airlines</h5> <hr>
-            <h3 class="card-title">{{airline_count}}</h3>
-        </div>
+            <section class="card text-center text-white bg-info">
+                <div class="card-body">
+                    <h5 class="card-title">Total Hotels</h5> <hr>
+                    <h3 class="card-title">{{ hotel_count }}</h3>
+                </div>
+            </section>
         </section>
+
+        <section class="col-3">
+            <section class="card text-center text-white bg-danger">
+                <div class="card-body">
+                    <h5 class="card-title">Total Airlines</h5> <hr>
+                    <h3 class="card-title">{{ airline_count }}</h3>
+                </div>
+            </section>
         </section>
     </section>
 </section>
 <hr>
+
 <h4>Filter Guest Bookings</h4>
 <section class="container-fluid" style="margin-bottom: 5%; margin-top: 1.5%;">
     <section class="row">
         <section style="width: 344px; margin-right: 5px;">
             <section class="card card-body">
                 <form method="get">
-                    {{guestFilter.form.as_p}}
+                    {{ guestFilter.form.as_p }}
                     <button class="btn btn-primary" type="submit">Search</button>
                 </form>
             </section>
@@ -59,29 +61,32 @@
         <section style="width: 970px;">
             <section class="card card-body">
                 <table class="table">
-                    <tr>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>Destination</th>
-                        <th>Hotel</th>
-                        <th>Airline</th>
-                        <th>Arrival Date</th>
-                        <th>Departure Date</th>
-                        <th>Date Created</th>
-                    </tr>
-
-                    {% for guest in guests %}
+                    <thead>
                         <tr>
-                            <td>{{guest.name}}</td>
-                            <td>{{guest.country}}</td>
-                            <td>{{guest.destination}}</td>
-                            <td>{{guest.hotel}}</td>
-                            <td>{{guest.airline}}</td>
-                            <td>{{guest.arrival_date}}</td>
-                            <td>{{guest.departure_date}}</td>
-                            <td>{{guest.date_created}}</td>
+                            <th>Name</th>
+                            <th>Country</th>
+                            <th>Destination</th>
+                            <th>Hotel</th>
+                            <th>Airline</th>
+                            <th>Arrival Date</th>
+                            <th>Departure Date</th>
+                            <th>Date Created</th>
                         </tr>
-                    {% endfor %}
+                    </thead>
+                    <tbody>
+                        {% for guest in guests %}
+                            <tr>
+                                <td>{{ guest.user_id.username }}</td>
+                                <td>{{ guest.country }}</td>
+                                <td>{{ guest.destination }}</td>
+                                <td>{{ guest.hotel }}</td>
+                                <td>{{ guest.airline }}</td>
+                                <td>{{ guest.arrival_date }}</td>
+                                <td>{{ guest.departure_date }}</td>
+                                <td>{{ guest.date_created }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </section>
         </section>
